@@ -31,6 +31,7 @@ from tensorboard.plugins import base_plugin
 from tensorboard.plugins.graph import graph_util
 from tensorboard.plugins.graph import keras_util
 from tensorboard.util import tb_logging
+from tensorboard.util.meta_util import rewrite_graph
 
 logger = tb_logging.get_logger()
 
@@ -166,6 +167,7 @@ class GraphsPlugin(base_plugin.TBPlugin):
     # This next line might raise a ValueError if the limit parameters
     # are invalid (size is negative, size present but key absent, etc.).
     process_graph.prepare_graph_for_ui(graph, limit_attr_size, large_attrs_key)
+    rewrite_graph(graph)
     return (str(graph), 'text/x-protobuf')  # pbtxt
 
   def run_metadata_impl(self, run, tag):

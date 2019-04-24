@@ -33,7 +33,9 @@ from tensorboard.compat.proto import config_pb2
 from tensorboard.compat.proto import event_pb2
 from tensorboard.compat.proto import graph_pb2
 from tensorboard.compat.proto import meta_graph_pb2
+from tensorboard.compat.proto import node_def_pb2
 from tensorboard.util import tb_logging
+from tensorboard.util.meta_util import rewrite_meta
 
 
 logger = tb_logging.get_logger()
@@ -420,6 +422,9 @@ class EventAccumulator(object):
 
     run_metadata = config_pb2.RunMetadata()
     run_metadata.ParseFromString(self._tagged_metadata[tag])
+    #test_node = node_def_pb2.NodeDef(name="Test", op="TestOp")
+    #run_metadata.partition_graphs[0].node.append(test_node)
+    rewrite_meta(run_metadata)
     return run_metadata
 
   def Tensors(self, tag):

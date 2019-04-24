@@ -75,6 +75,12 @@ py_library(
 )
 
 py_library(
+    name = "meta_util",
+    srcs = ["meta_util.py"],
+    srcs_version = "PY2AND3",
+)
+
+py_library(
     name = "tensor_util",
     srcs = ["tensor_util.py"],
     srcs_version = "PY2AND3",

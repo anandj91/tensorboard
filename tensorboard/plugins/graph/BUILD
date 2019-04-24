@@ -21,6 +21,7 @@ py_library(
         "//tensorboard/backend/event_processing:event_accumulator",
         "//tensorboard/compat:tensorflow",
         "//tensorboard/plugins:base_plugin",
+        "//tensorboard/util:meta_util",
         "@com_google_protobuf//:protobuf_python",
         "@org_pocoo_werkzeug",
         "@org_pythonhosted_six",
